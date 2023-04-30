@@ -1,0 +1,13 @@
+INCLUDE = "CSFML-2.5.1\include"
+LIB = "CSFML-2.5.1\lib"
+
+CFLAGS = -lcsfml-window -lcsfml-graphics -lcsfml-system
+
+rule COMPILE
+  command = gcc -c $in -o $out -I$INCLUDE
+
+rule LINK
+  command = gcc $in -o $out -L$LIB $CFLAGS
+
+build build\main.o : COMPILE src\display.c
+build build\main : LINK build\main.o
