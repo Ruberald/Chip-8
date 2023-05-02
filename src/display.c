@@ -1,14 +1,11 @@
-#include <stdlib.h>
-#include <SFML/Graphics.h>
+#include "display.h"
 
 const int displayColumns = 64, displayRows = 32, scale = 10;
 
 sfRenderWindow* window;
 sfVideoMode mode = {displayColumns*scale, displayRows*scale, 32};
 
-void drawPixel(int x, int y);
-
-int main(void)
+int init_display(void)
 {
     window = sfRenderWindow_create(mode, "Chip-8 emu", sfResize | sfClose, NULL);
     if (!window) return EXIT_FAILURE;

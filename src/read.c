@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
-#include "system.h"
+#include "memory.h"
+
+struct memory mem;
 
 void readFile(char * fileName)
 {
@@ -10,24 +13,20 @@ void readFile(char * fileName)
 	char ch;
 	int index = 0;
 	
-	if((file = fopen(fileName, "rb")) == NULL){
-		printf("Error reading file\n");
+    file = fopen(fileName, "rb");
+
+    if((file) == NULL){
+        fprintf(stderr, "[FAILED] Error reading file\n");
 		exit(EXIT_FAILURE);
-	}
+    }
 
-	while((ch = getc(file)) != EOF){
-		printf("%x", ch);
-		memory[index] = ch;
-	}
-
-	printf("%s\n%s\n", memory[1], memory[4]);
+    fread(mem.data, 1, sizeof(mem.data), file);
 
 	fclose(file);
 }
 
-int main(void)
+void init_mem(char * fileName, struct memory * mp)
 {
-	readFile("src\\IBM Logo.ch8");
-
-	return 0;
+    memset(mem.zero_page, 0, sizeof(mem.zero_page));
+    mp = &mem;
 }
