@@ -1,46 +1,55 @@
 #include "display.h"
+//#include "keyboard.h"
+#include <stdio.h>
 
-const int displayColumns = 64, displayRows = 32, scale = 10;
+const int scale = 10;
+
+uint8_t display[DISPLAY_COLUMNS][DISPLAY_ROWS];
 
 sfRenderWindow* window;
-sfVideoMode mode = {displayColumns*scale, displayRows*scale, 32};
+sfVideoMode mode = {DISPLAY_COLUMNS*scale, DISPLAY_ROWS*scale, 32};
 
-int init_display(void)
+sfRenderWindow * init_display(void)
 {
+    displayClear();
+
     window = sfRenderWindow_create(mode, "Chip-8 emu", sfResize | sfClose, NULL);
-    if (!window) return EXIT_FAILURE;
+    if (!window) return window;
     sfRenderWindow_setFramerateLimit(window, 60);
-
-    sfEvent event;
-
-    while (sfRenderWindow_isOpen(window))
-    {
-        while (sfRenderWindow_pollEvent(window, &event))
-        {
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(window);
-        }
-        sfRenderWindow_clear(window, sfBlack);
-
-        drawPixel(5, 5);
-        drawPixel(5, 7);
-        drawPixel(100, 70);
-
-        sfRenderWindow_display(window);
-    }
-
-    sfRenderWindow_destroy(window);
     
-    return EXIT_SUCCESS;
+    return window;
 }
 
 void drawPixel(int x, int y)
 {
-    x = x % displayColumns, y = y % displayRows;
+    x = x % DISPLAY_COLUMNS, y = y % DISPLAY_ROWS;
 
     sfRectangleShape* pixel = sfRectangleShape_create();
     sfRectangleShape_setPosition(pixel, (sfVector2f) {x*scale, y*scale});
     sfRectangleShape_setSize(pixel, (sfVector2f) {scale, scale});
 
     sfRenderWindow_drawRectangleShape(window, pixel, NULL);
+}
+
+void renderDisplay()
+{
+    for (int column = 0; column < DISPLAY_COLUMNS; column++)
+    {
+        for (int row = 0; row < DISPLAY_ROWS; row++)
+        {
+            if (display[column][row])
+                drawPixel(column, row);
+        }
+    }
+}
+
+void displayClear()
+{
+    for (int column = 0; column < DISPLAY_COLUMNS; column++)
+    {
+        for (int row = 0; row < DISPLAY_ROWS; row++)
+        {
+            display[column][row] = 0;
+        }
+    }
 }

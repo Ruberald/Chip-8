@@ -6,5 +6,5 @@
 
  file(GLOB SOURCES "src/*.c")
  file(GLOB HEADERS "headers/*.h")
- add_executable(Chip-8-emulator ${SOURCES} ${HEADERS})
+ add_executable(Chip-8-emulator ${SOURCES})
  target_link_libraries(Chip-8-emulator csfml-window csfml-graphics csfml-system)

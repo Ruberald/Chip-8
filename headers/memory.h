@@ -9,4 +9,8 @@ struct memory {
   uint8_t data[MEM_SIZE - 0x200];
 };
 
+void readFile(char * fileName);
+
+struct memory * init_mem(char * fileName);
+
 #endif // MEMORY_H

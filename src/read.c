@@ -25,8 +25,11 @@ void readFile(char * fileName)
 	fclose(file);
 }
 
-void init_mem(char * fileName, struct memory * mp)
+struct memory * init_mem(char * fileName)
 {
     memset(mem.zero_page, 0, sizeof(mem.zero_page));
-    mp = &mem;
+
+    readFile(fileName);
+
+    return &mem;
 }

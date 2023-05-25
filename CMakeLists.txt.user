@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.1, 2023-05-02T19:59:13. -->
+<!-- Written by QtCreator 8.0.1, 2023-05-25T23:37:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -345,11 +345,13 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Chip-8-emulator</value>
+    <value type="QString" key="RunConfiguration.Arguments">&quot;IBM Logo.ch8&quot;</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseTerminal">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/heinrichskies/projects/C-Practice/build-Chip-8-emulator-Desktop-Debug</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
