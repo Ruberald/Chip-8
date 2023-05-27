@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.1, 2023-05-25T23:37:00. -->
+<!-- Written by QtCreator 8.0.1, 2023-05-26T22:17:37. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -345,7 +345,8 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Chip-8-emulator</value>
-    <value type="QString" key="RunConfiguration.Arguments">&quot;IBM Logo.ch8&quot;</value>
+    <value type="QString" key="RunConfiguration.Arguments">&quot;test_opcode.ch8&quot;</value>
+    <value type="bool" key="RunConfiguration.Arguments.multi">true</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

@@ -58,12 +58,74 @@ int main(int argc, char *argv[])
             JP_1nnn(opcode & 0x0FFF);
             break;
 
+        case 0x2000:
+            CALL_2nnn(opcode & 0x0FFF);
+            break;
+
+        case 0x3000:
+            SE_3xkk((opcode & 0x0F00) >> 8, (opcode & 0x00FF));
+            break;
+
+        case 0x4000:
+            SNE_4xkk((opcode & 0x0F00) >> 8, (opcode & 0x00FF));
+            break;
+
+        case 0x5000:
+            SE_5xy0((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+            break;
+
         case 0x6000:
             LD_6xkk((opcode & 0x0F00) >> 8, (opcode & 0x00FF));
             break;
 
         case 0x7000:
             ADD_7xkk((opcode & 0x0F00) >> 8, (opcode & 0x00FF));
+            break;
+
+        case 0x8000:
+            switch(opcode & 0x000F)
+            {
+            case 0x0000:
+                LD_8xy0((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0001:
+                OR_8xy1((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0002:
+                AND_8xy2((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0003:
+                XOR_8xy3((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0004:
+                ADD_8xy4((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0005:
+                SUB_8xy5((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x0006:
+                SHR_8xy6((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0007:
+                SUBN_8xy7((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
+                break;
+
+            case 0x000E:
+                SHL_8xyE((opcode & 0x0F00) >> 8);
+                break;
+
+            }
+            break;
+
+        case 0x9000:
+            SNE_9xy0((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4);
             break;
 
         case 0xA000:
@@ -73,6 +135,27 @@ int main(int argc, char *argv[])
         case 0xD000:
             DRW_Dxyn((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4, (opcode & 0x000F));
             break;
+
+        case 0xF000:
+            switch(opcode & 0x00FF)
+            {
+
+            case 0x001E:
+                ADD_Fx1E((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0033:
+                LD_Fx33((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0055:
+                LD_Fx55((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0065:
+                LD_Fx65((opcode & 0x0F00) >> 8);
+                break;
+            }
         }
     }
 

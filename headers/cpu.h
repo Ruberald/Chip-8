@@ -40,44 +40,50 @@ void JP_1nnn(uint16_t addr);
 
 void CALL_2nnn(uint16_t addr);
 
-void SE_3xkk(int x, uint8_t kk);
+void SE_3xkk(uint8_t x, uint8_t kk);
 
-void SNE_4xkk(int x, uint8_t kk);
+void SNE_4xkk(uint8_t x, uint8_t kk);
 
-void SE_5xy0(int x, int y);
+void SE_5xy0(uint8_t x, uint8_t y);
 
 void LD_6xkk(uint8_t x, uint8_t kk);
 
 void ADD_7xkk(uint8_t x, uint8_t kk);
 
-void SUB_8xy5(int x, int y);
+void LD_8xy0(uint8_t x, uint8_t y);
 
-void LD_8xy0(int x, int y);
+void OR_8xy1(uint8_t x, uint8_t y);
 
-void OR_8xy1(int x, int y);
+void AND_8xy2(uint8_t x, uint8_t y);
 
-void AND_8xy2(int x, int y);
+void XOR_8xy3(uint8_t x, uint8_t y);
 
-void XOR_8xy3(int x, int y);
+void ADD_8xy4(uint8_t x, uint8_t y);
 
-void ADD_8xy4(int x, int y);
+void SUB_8xy5(uint8_t x, uint8_t y);
 
-void SUB_8xy5(int x, int y);
+void SHR_8xy6(uint8_t x);
 
-void SHR_8xy6(int x);
+void SUBN_8xy7(uint8_t x, uint8_t y);
 
-void SUBN_8xy7(int x, int y);
+void SHL_8xyE(uint8_t x);
 
-void SHL_8xyE(int x);
-
-void SNE_9xy0(int x, int y);
+void SNE_9xy0(uint8_t x, uint8_t y);
 
 void LD_Annn(uint16_t addr);
 
 void JP_Bnnn(uint16_t addr);
 
-void RND_Cxkk(int x, uint8_t kk);
+void RND_Cxkk(uint8_t x, uint8_t kk);
 
 void DRW_Dxyn(uint8_t x, uint8_t y, uint8_t n);
+
+void ADD_Fx1E(uint8_t x);
+
+void LD_Fx33(uint8_t x);
+
+void LD_Fx55(uint8_t x);
+
+void LD_Fx65(uint8_t x);
 
 #endif // CPU_H
