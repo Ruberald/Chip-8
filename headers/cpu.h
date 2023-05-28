@@ -3,7 +3,7 @@
 #include "memory.h"
 #include "display.h"
 
-#define START_ADDRESS 0x0000
+#define START_ADDRESS 0x0200
 
 #ifndef CPU_H
 
@@ -31,6 +31,8 @@ struct central_processing_unit {
 struct central_processing_unit * set_memory(struct memory * mp);
 
 void reset();
+
+void delay_timer();
 
 void CLS_00E0();
 
@@ -78,7 +80,21 @@ void RND_Cxkk(uint8_t x, uint8_t kk);
 
 void DRW_Dxyn(uint8_t x, uint8_t y, uint8_t n);
 
+void SKP_Ex9E(uint8_t x);
+
+void SKNP_ExA1(uint8_t x);
+
+void LD_Fx07(uint8_t x);
+
+void LD_Fx0A(uint8_t x);
+
+void LD_Fx15(uint8_t x);
+
+void LD_Fx18(uint8_t x);
+
 void ADD_Fx1E(uint8_t x);
+
+void LD_Fx29(uint8_t x);
 
 void LD_Fx33(uint8_t x);
 

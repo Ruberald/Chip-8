@@ -7,7 +7,7 @@
 #define DISPLAY_COLUMNS 64
 #define DISPLAY_ROWS 32
 
-extern uint8_t display[DISPLAY_COLUMNS][DISPLAY_ROWS];
+extern sfUint8 display[DISPLAY_COLUMNS * DISPLAY_ROWS * 4];
 
 void displayClear();
 sfRenderWindow * init_display(void);

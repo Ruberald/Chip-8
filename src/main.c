@@ -3,11 +3,13 @@
 #include "memory.h"
 #include "keyboard.h"
 #include <stdio.h>
+#include <time.h>
+#include <SFML/Audio.h>
 
 int main(int argc, char *argv[])
 {
     struct memory * mem;
-    printf("%s", argv[1]);
+//    printf("%s", argv[1]);
     mem = init_mem(argv[1]);
 
     reset();
@@ -19,6 +21,13 @@ int main(int argc, char *argv[])
     sfRenderWindow * window = init_display();
 
     sfEvent event;
+
+//    time_t time_last = time(NULL);
+
+//    sfInt16 soundSamples[] = {0xFFFF};
+//    sfSoundBuffer * buffer = sfSoundBuffer_createFromSamples(soundSamples, 1, 1, 44100);
+//    sfSound * sound = sfSound_create();
+//    sfSound_setBuffer(sound, buffer);
 
     while (sfRenderWindow_isOpen(window))
     {
@@ -36,6 +45,18 @@ int main(int argc, char *argv[])
         renderDisplay();
 
         sfRenderWindow_display(window);
+
+//        time_t time_now = time(NULL);
+//        if(difftime(time_now, time_last) > 1/60){
+//            delay_timer();
+//            time_last = time_now;
+//        }
+
+//        sfSound_play(sound);
+
+//        if(cpu->sound_timer != 0)
+
+
 
         opcode = (mem->data[cpu->pc] << 8u) | (mem->data[cpu->pc + 1]);
         cpu->pc += 2;
@@ -136,12 +157,44 @@ int main(int argc, char *argv[])
             DRW_Dxyn((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4, (opcode & 0x000F));
             break;
 
+        case 0xE000:
+            switch(opcode & 0x00FF)
+            {
+            case 0x009E:
+                SKP_Ex9E((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x00A1:
+                SKNP_ExA1((opcode & 0x0F00) >> 8);
+                break;
+            }
+            break;
+
         case 0xF000:
             switch(opcode & 0x00FF)
             {
 
+            case 0x0007:
+                LD_Fx07((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x000A:
+                break;
+
+            case 0x0015:
+                LD_Fx15((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0018:
+                LD_Fx18((opcode & 0x0F00) >> 8);
+                break;
+
             case 0x001E:
                 ADD_Fx1E((opcode & 0x0F00) >> 8);
+                break;
+
+            case 0x0029:
+                LD_Fx29((opcode & 0x0F00) >> 8);
                 break;
 
             case 0x0033:
@@ -157,6 +210,7 @@ int main(int argc, char *argv[])
                 break;
             }
         }
+//    }
     }
 
     sfRenderWindow_destroy(window);
