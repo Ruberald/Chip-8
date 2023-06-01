@@ -3,8 +3,6 @@
 
 struct central_processing_unit cpu;
 
-uint8_t zero_flag = 0;
-
 struct central_processing_unit * set_memory(struct memory * mp)
 {
     cpu.mem = mp;
@@ -13,8 +11,6 @@ struct central_processing_unit * set_memory(struct memory * mp)
 
 uint8_t * get_mem_pointer()
 {
-//    if (zero_flag)
-//        return cpu.mem->zero_page;
     return cpu.mem->data;
 }
 
@@ -171,7 +167,6 @@ void SNE_9xy0(uint8_t x, uint8_t y)
 void LD_Annn(uint16_t addr)
 {
     cpu.I = (addr);
-    zero_flag = 0;
 }
 
 void JP_Bnnn(uint16_t addr)
@@ -196,7 +191,6 @@ void DRW_Dxyn(uint8_t x, uint8_t y, uint8_t n)
         {
             uint8_t spritePixel = sprite_byte & (0x80 >> bit);
 
-//            uint8_t * displayPixel = &display[4 * (cpu.Vx[x] + bit) * (32 + cpu.Vx[y] + index)];
             uint8_t * displayPixel = &display[return_pixels(cpu.Vx[x] + bit, cpu.Vx[y] + index)];
 
             if(spritePixel)
@@ -259,13 +253,11 @@ void LD_Fx18(uint8_t x)
 void ADD_Fx1E(uint8_t x)
 {
     cpu.I = cpu.I + cpu.Vx[x];
-    zero_flag = 0;
 }
 
 void LD_Fx29(uint8_t x)
 {
     cpu.I = (0x50 + 5 * cpu.Vx[x]);
-    zero_flag = 1;
 }
 
 void LD_Fx33(uint8_t x)

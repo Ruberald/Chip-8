@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.1, 2023-05-28T19:45:07. -->
+<!-- Written by QtCreator 8.0.1, 2023-06-01T20:18:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -352,7 +352,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Chip-8-emulator</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Chip-8-emulator</value>
-    <value type="QString" key="RunConfiguration.Arguments">&quot;$HOME/projects/C-Practice/build-Chip-8-emulator-Desktop-Debug/4-flags.ch8&quot;</value>
+    <value type="QString" key="RunConfiguration.Arguments">&quot;$HOME/projects/C-Practice/build-Chip-8-emulator-Desktop-Debug/6-keypad.ch8&quot;</value>
     <value type="bool" key="RunConfiguration.Arguments.multi">true</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

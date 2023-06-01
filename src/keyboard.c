@@ -6,7 +6,7 @@ void handle_keyboard_input(int keyCode, int flag)
 {
     switch(keyCode)
     {
-    case sfKeyNum0:
+    case sfKeyX:
         keyboard[0] = flag;
         break;
     case sfKeyNum1:
@@ -18,40 +18,40 @@ void handle_keyboard_input(int keyCode, int flag)
     case sfKeyNum3:
         keyboard[3] = flag;
         break;
-    case sfKeyNum4:
+    case sfKeyQ:
         keyboard[4] = flag;
         break;
-    case sfKeyNum5:
+    case sfKeyW:
         keyboard[5] = flag;
         break;
-    case sfKeyNum6:
+    case sfKeyE:
         keyboard[6] = flag;
         break;
-    case sfKeyNum7:
+    case sfKeyA:
         keyboard[7] = flag;
         break;
-    case sfKeyNum8:
+    case sfKeyS:
         keyboard[8] = flag;
         break;
-    case sfKeyNum9:
+    case sfKeyD:
         keyboard[9] = flag;
         break;
-    case sfKeyA:
+    case sfKeyZ:
         keyboard[10] = flag;
         break;
-    case sfKeyB:
+    case sfKeyC:
         keyboard[11] = flag;
         break;
-    case sfKeyC:
+    case sfKeyNum4:
         keyboard[12] = flag;
         break;
-    case sfKeyD:
+    case sfKeyR:
         keyboard[13] = flag;
         break;
-    case sfKeyE:
+    case sfKeyF:
         keyboard[14] = flag;
         break;
-    case sfKeyF:
+    case sfKeyV:
         keyboard[15] = flag;
         break;
 

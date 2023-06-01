@@ -1,15 +1,15 @@
-//#include "display.h"
 #include "cpu.h"
 #include "memory.h"
 #include "keyboard.h"
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 #include <SFML/Audio.h>
 
 int main(int argc, char *argv[])
 {
     struct memory * mem;
-//    printf("%s", argv[1]);
+
     mem = init_mem(argv[1]);
 
     reset();
@@ -22,13 +22,14 @@ int main(int argc, char *argv[])
 
     sfEvent event;
 
-//    time_t time_last = time(NULL);
-
 //    sfInt16 soundSamples[] = {0xFFFF};
 //    sfSoundBuffer * buffer = sfSoundBuffer_createFromSamples(soundSamples, 1, 1, 44100);
 //    sfSound * sound = sfSound_create();
 //    sfSound_setBuffer(sound, buffer);
 
+    int division_cycles = 0;
+
+    double cycle_delay = 2000000, timer_delay = 1666666.66;
     while (sfRenderWindow_isOpen(window))
     {
         while (sfRenderWindow_pollEvent(window, &event))
@@ -46,17 +47,16 @@ int main(int argc, char *argv[])
 
         sfRenderWindow_display(window);
 
-//        time_t time_now = time(NULL);
-//        if(difftime(time_now, time_last) > 1/60){
-//            delay_timer();
-//            time_last = time_now;
-//        }
-
 //        sfSound_play(sound);
 
 //        if(cpu->sound_timer != 0)
 
+        if (division_cycles == 9) {
+            delay_timer();
+            division_cycles = 0;
+        }
 
+        division_cycles++;
 
         opcode = (mem->data[cpu->pc] << 8u) | (mem->data[cpu->pc + 1]);
         cpu->pc += 2;
@@ -153,6 +153,14 @@ int main(int argc, char *argv[])
             LD_Annn((opcode & 0x0FFF));
             break;
 
+        case 0xB000:
+            JP_Bnnn((opcode & 0x0FFF));
+            break;
+
+        case 0xC000:
+            RND_Cxkk((opcode & 0x0F00) >> 8, (opcode & 0x00FF));
+            break;
+
         case 0xD000:
             DRW_Dxyn((opcode & 0x0F00) >> 8, (opcode & 0x00F0) >> 4, (opcode & 0x000F));
             break;
@@ -210,7 +218,7 @@ int main(int argc, char *argv[])
                 break;
             }
         }
-//    }
+        usleep(1850);
     }
 
     sfRenderWindow_destroy(window);
